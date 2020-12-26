@@ -23,10 +23,12 @@ def sortFunc(x):
 def format_tokens(tokens):
     final_tokens = []
     for token in tokens:
-        if token[1]=='Reserved word':
-         final_tokens.append([token[0].group(2),token[1]])
+        if token[1] == 'Reserved word':
+            final_tokens.append([token[0].group(2), token[0].group(2)])
+        elif token[1] == 'Special Symbol':
+            final_tokens.append([token[0].group(1), token[0].group(1)])
         else:
-         final_tokens.append([token[0].group(1),token[1]])
+            final_tokens.append([token[0].group(1), token[1]])
     return final_tokens
 
 def scan_to_tokens(lines):
